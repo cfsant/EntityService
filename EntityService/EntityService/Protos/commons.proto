@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "EntityService.Protos";
+
+service Commons {
+  // Sends a greeting
+  rpc ProfileCreate (ProfileCreateInfo) returns (Profile);
+}
+
+message ProfileCreateInfo {
+  string owner_id = 1;
+  string name = 2;
+  string password = 3;
+  repeated string roles = 4;
+}
+
+message Profile {
+	string id = 1;
+    string owner_id = 2;
+    string publisher_id = 3;
+    google.protobuf.Timestamp Insertion = 4;
+    google.protobuf.Timestamp Change = 5;
+    string name = 6;
+    string password = 7;
+    repeated string roles = 8;
+    bool state = 9;
+}
